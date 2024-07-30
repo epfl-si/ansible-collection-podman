@@ -1,3 +1,7 @@
+# Version 0.1.2
+
+- Fix the path to write the quadlet file into 🤦
+
 # Version 0.1.1
 
 - Just a doc fix
