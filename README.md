@@ -11,6 +11,8 @@ Example usage:
     content: |
       [Unit]
       Description=Podman container mariadb.service
+
+      [Container]
       Image=docker.io/library/mariadb:11
 
       [Install]
