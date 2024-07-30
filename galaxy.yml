@@ -10,7 +10,7 @@ description: Ansible collection to manage Podman containers beyond what `contain
 # Either a single license or a list of licenses for content inside of a collection. Ansible Galaxy currently only
 # accepts L(SPDX,https://spdx.org/licenses/) licenses. This key is mutually exclusive with 'license_file'
 license:
-- GPL-2.0
+- GPL-2.0-only
 
 tags: []
 dependencies:
