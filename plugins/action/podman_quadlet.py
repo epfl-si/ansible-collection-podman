@@ -73,13 +73,16 @@ env QUADLET_UNIT_DIRS="$PWD" /usr/lib/systemd/system-generators/podman-system-ge
     @property
     def systemd_config_dir (self):
         if not hasattr(self, '__systemd_config_dir'):
-            id = self.query('shell', dict(_raw_params='id -u')).rstrip()
-            if id == '0':
+            if '0' == self._shell_query_single_line('id -u'):
                 # No, we don't support Systemd on Windows®.
                 self.__systemd_config_dir = "/etc/systemd"
             else:
-                self.__systemd_config_dir = "%s/.config/containers/systemd" % self.query('shell', dict(_raw_params='echo $HOME')).rstrip()
+                self.__systemd_config_dir = "%s/.config/containers/systemd" % self._shell_query_single_line('echo $HOME')
         return self.__systemd_config_dir
+
+    def _shell_query_single_line (self, cmd):
+        stdout = self.query('shell', dict(_raw_params=cmd))["stdout"]
+        return stdout.rstrip()
 
 def uuid ():
     return str(uuid4())
