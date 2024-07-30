@@ -75,7 +75,7 @@ env QUADLET_UNIT_DIRS="$PWD" /usr/lib/systemd/system-generators/podman-system-ge
         if not hasattr(self, '__systemd_config_dir'):
             if '0' == self._shell_query_single_line('id -u'):
                 # No, we don't support Systemd on Windows®.
-                self.__systemd_config_dir = "/etc/systemd"
+                self.__systemd_config_dir = "/etc/containers/systemd"
             else:
                 self.__systemd_config_dir = "%s/.config/containers/systemd" % self._shell_query_single_line('echo $HOME')
         return self.__systemd_config_dir
